@@ -1,0 +1,10 @@
+name: "📋 기타"
+description: "분류 안되는 이슈"
+title: "[ETC] "
+labels: ["📬기타 (etc)"]
+type: "task" 
+body:
+  - type: textarea
+    id: details
+    attributes:
+      label: "상세 내용"

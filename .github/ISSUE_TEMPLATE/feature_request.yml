@@ -1,7 +1,8 @@
 name: "✨ Feature Request"
 description: 새로운 기능을 제안해주세요
 title: "[FEATURE] "
-labels: ["enhancement"]
+labels: ["✨ 기능 (Feature)"]
+type: "feature" 
 assignees: []
 
 body:

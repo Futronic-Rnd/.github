@@ -1,0 +1,15 @@
+name: "📚 문서"
+description: "문서 오류/개선 제안"
+title: "[DOCS] "
+labels: ["📃 문서 (Docs)", "priority:low"]
+type: "task" 
+body:
+  - type: textarea
+    id: location
+    attributes:
+      label: "문서 위치"
+      placeholder: "README.md 3.2절"
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: "개선 제안"

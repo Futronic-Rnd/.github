@@ -1,0 +1,13 @@
+name: "🌏 배포"
+description: "배포 정보"
+title: "[DUPLICATE] "
+labels: ["🌏 배포", "not-planned"]
+type: "task" 
+body:
+  - type: textarea
+    id: original
+    attributes:
+      label: "원본 이슈 링크"
+      placeholder: "#123 또는 https://github.com/.../issues/123"
+    validations:
+      required: true

@@ -1,0 +1,24 @@
+# 라벨 모양 변경 예시
+# 1. 조직명 바꾸기 (예: robotics-team)
+$ORG = "Futronic-Rnd"
+
+# 2. 스크린샷 5개 라벨 정의
+$labels = @{
+    "🐞 버그 (Bug)" = @{color="d73a4a"; desc="Something isn't working"}
+    "✨ 기능 (Feature)" = @{color="a2eeef"; desc="New feature or request"}
+    "🌏 배포 (Deploy)" = @{color="C2E0C6"; desc="Deployments, releases"}
+    "📃 문서 (Docs)" = @{color="1D76DB"; desc="Improvements or additions to documentation"}
+    "📬기타 (etc)" = @{color="d4C5F9"; desc="etc"}
+}
+
+# 3. 모든 repo에 라벨 동기화
+$repos = gh repo list $ORG --limit 50 --json name | ConvertFrom-Json
+foreach ($repo in $repos) {
+    Write-Host "🔄 $($repo.name)..." -ForegroundColor Yellow
+    foreach ($label in $labels.Keys) {
+        $info = $labels[$label]
+        gh label create $label --color $info.color --description $info.desc --repo "$ORG/$($repo.name)" 2>$null
+    }
+    Write-Host "✅ $($repo.name) 완료!" -ForegroundColor Green
+}
+Write-Host "🎉 전체 동기화 완료!" -ForegroundColor Cyan

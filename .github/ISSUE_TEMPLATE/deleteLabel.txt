@@ -1,0 +1,26 @@
+# 0. 전체 라벨 삭제 
+$ORG = "Futronic-Rnd"  # 당신 조직명
+
+# 1. Issues ON repo만 필터링
+$repos = gh repo list $ORG --limit 50 --json name | ConvertFrom-Json | Where-Object { 
+    (gh api repos/$ORG/$($_.name) --jq '.has_issues') -eq $true 
+}
+
+Write-Host "📋 Issues 활성화된 repo $($repos.Count)개 발견" -Foreground Cyan
+
+foreach ($repo in $repos) {
+    $repoName = "$ORG/$($repo.name)"
+    Write-Host "`n🔄 $repoName 라벨 삭제 중..." -Foreground Yellow
+    
+    # 현재 라벨 목록 가져오기
+    $currentLabels = gh label list $repoName --json name | ConvertFrom-Json
+    
+    foreach ($label in $currentLabels) {
+        Write-Host "  🗑️  $($label.name)" -Foreground Red
+        gh label delete $label.name --repo $repoName 2>$null
+    }
+    
+    Write-Host "✅ $repoName 모든 라벨 삭제 완료!" -Foreground Green
+}
+
+Write-Host "`n🎉 전체 기존 라벨 삭제 완료! 새로 시작하세요." -Foreground Cyan

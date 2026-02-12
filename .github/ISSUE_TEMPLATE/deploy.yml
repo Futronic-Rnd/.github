@@ -1,7 +1,7 @@
 name: "🌏 배포"
 description: "배포 정보"
 title: "[DUPLICATE] "
-labels: ["🌏 배포", "not-planned"]
+labels: ["🌏 배포 (Deploy)", "not-planned"]
 type: "task" 
 body:
   - type: textarea

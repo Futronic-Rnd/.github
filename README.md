@@ -11,6 +11,10 @@ Rnd 공통 템플릿 & 가이드입니다.
 | 📋 **Etc** | `etc` | 설정, 테스트, 기타 |
 
 
+
+### 구조
+
+```text
 .github/
 ├── ISSUE_TEMPLATE/
 │   ├── bug_report.yml
@@ -21,4 +25,8 @@ Rnd 공통 템플릿 & 가이드입니다.
 │   ├── deploy.yml
 │   ├── deleteLabel.txt
 │   └── insertLabel.txt
-└── README.md              ← 위 내용!
+└── README.md              
+```
+
+
+
